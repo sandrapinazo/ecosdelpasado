@@ -1,0 +1,62 @@
+@import 'core/settings';
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+.news-board {
+	height: 100vh;
+	width: 100%;
+	padding: 40px;
+	background: url("../images/woodplanks-1920x1200.jpg");
+	background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.article {
+	padding: 20px;
+	margin: 10px;
+}
+.one {
+	padding: 30px 40px;
+	width: 300px;
+	height: 200px;
+	background: url("../images/horizontal-corners.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: center;
+	.title {
+		margin: 0;
+		font-family: $font-handwriting1;
+		font-size: 15px;
+	}
+	.second-paper{
+			display: block;
+			position: absolute;
+			top: 220px;
+			left: 100px;
+			height: 50px;
+			width: 230px;
+			background: url("../images/clean-not-thorn.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			box-shadow: 0 0 5px rgba(0,0,0, 0.3);
+			transform: rotate(-10deg);
+	}
+	.news {
+		position: absolute;
+		top: 20%;
+		left: 20%;
+		margin: 0;
+		font-family: $font-handwriting2;
+		font-size: 25px;
+	}
+}
