@@ -26,7 +26,7 @@ function writeNews (news) {
     newP.classList.add('news-main');
     const newSpan = document.createElement('span');
     newSpan.classList.add('news-location');
-    newSpan.addEventListener('click', filterLocation);
+    //newSpan.addEventListener('click', filterLocation);
     const newTitle = document.createTextNode(item.title);
     const newText = document.createTextNode(item.main);
     const newLocation = document.createTextNode(item.location);
@@ -66,6 +66,11 @@ function filterLocation (event) {
   const locationNews = allNews.filter(item => (selectedLocation==='Thea')? item.location : item.location === selectedLocation);
   clearNews();
   writeNews(locationNews);
+  const locationTabs = locationsUlEl.querySelectorAll('.location-tab');
+  for (const tab of locationTabs){
+    tab.classList.remove('selected-location-tab');
+  }
+  event.currentTarget.classList.add('selected-location-tab');
 }
 
 function clearNews () {

@@ -9,21 +9,41 @@
     background-size: cover;
 	background-position: center;
 	//box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	text-align: center;
+}
+
+.title {
+	margin: 0 30px;
+	padding: 10px;
+	font-family: $font-handwriting1;
+	font-size: 30px;
+	font-weight: normal;
+	align-self: center;
+	text-decoration: none;
+	color: black;
+}
+.page-title {
+	margin: 0;
+	padding: 10px;
+	font-family: $font-titles;
+	font-size: 75px;
+	font-weight: normal;
+}
+.menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 	display: flex;
+	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	.title {
-		margin: 0 50px;
-		padding: 10px;
-		font-family: $font-handwriting1;
-		font-size: 30px;
-		font-weight: normal;
-	}
-	.page-title {
-		margin: 0 50px;
-		padding: 10px;
-		font-family: $font-titles;
-		font-size: 75px;
-		font-weight: normal;
-	}
+}
+.menu-link {
+	text-decoration: none;
+	margin: 0 30px;
+	color: black;
+	font-size: 20px;
+	font-family: $font-textnews;
 }
