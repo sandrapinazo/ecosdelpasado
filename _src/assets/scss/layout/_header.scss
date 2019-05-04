@@ -1,0 +1,29 @@
+.page__header {
+	position: fixed;
+	top:0;
+	width: 100%;
+	background-color: #bc9243;
+	background: url("../images/old-paper-2000x1333.jpg");
+	background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: center;
+	//box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	.title {
+		margin: 0 50px;
+		padding: 10px;
+		font-family: $font-handwriting1;
+		font-size: 30px;
+		font-weight: normal;
+	}
+	.page-title {
+		margin: 0 50px;
+		padding: 10px;
+		font-family: $font-titles;
+		font-size: 75px;
+		font-weight: normal;
+	}
+}
