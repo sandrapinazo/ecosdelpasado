@@ -10,9 +10,10 @@ const allNews = [
 ];
 const newsUlEl = document.querySelector('.news-ul');
 const locationsUlEl = document.querySelector('.locations-container');
+const pageTitle = document.querySelector('.page-title');
 
-writeNews(allNews);
-writeLocations();
+if (pageTitle.innerHTML==='News') {writeNews(allNews);}
+if (pageTitle.innerHTML==='News') {writeLocations();}
 
 function writeNews (news) {
   for (const item of news) {
@@ -26,7 +27,6 @@ function writeNews (news) {
     newP.classList.add('news-main');
     const newSpan = document.createElement('span');
     newSpan.classList.add('news-location');
-    //newSpan.addEventListener('click', filterLocation);
     const newTitle = document.createTextNode(item.title);
     const newText = document.createTextNode(item.main);
     const newLocation = document.createTextNode(item.location);
