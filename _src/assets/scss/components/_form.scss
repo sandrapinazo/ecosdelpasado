@@ -1,0 +1,42 @@
+.create-news--form {
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: #e5c07b;
+    background: url(../images/old_paper_2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    border: solid 1px rgba(89, 39, 1, 1);
+    box-shadow: 3px 3px 50px 3px rgba(63, 28, 1, 1);
+    display: flex;
+    flex-direction: column;
+    font-family: $font-textnews;
+}
+
+.form-input {
+    margin: 0px 0 10px;
+    border: solid 1px rgba(89, 39, 1, 0.3);
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.form-button{
+    align-self: flex-end;
+    font-family: $font-textnews;
+    font-size: 14px;
+    padding: 3px 10px;
+    background-color: #2a4202;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    color: lightgoldenrodyellow;
+    &:hover {
+        background-color: rgb(81, 122, 11)
+    }
+}
+
+.hidden {
+    display: none;
+}

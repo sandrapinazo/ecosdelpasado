@@ -2,6 +2,7 @@
 .locations-container {
 	position: fixed;
 	margin: 0;
+	margin-top: 45px;
 	padding: 0;
 	list-style: none;	
 }
@@ -16,7 +17,33 @@
 	font-size: 20px;
 	border: solid 1px rgba(0, 0, 0, 0.2);
 	border-right: transparent;
+	border-left: transparent;
 	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+	&__create-news {
+		outline: none;
+		position: fixed;
+		text-align: left;
+		height: 32px;
+		background: linear-gradient(to right, rgba(81, 122, 11, 1) 0%, rgba(42, 66, 2,1) 100%);
+		border: solid 1px rgba(0, 0, 0, 0.2);
+		border-left: transparent;
+		&:after {
+			content: "";
+			position: absolute;
+			right: -16px;
+			top: 14px;
+			border-bottom: 17px solid #2a4202;
+			border-right: 17px solid transparent;
+		}
+		&:before {
+			content: "";
+			position: absolute;
+			right: -16px;
+			top: -1px;
+			border-top: 17px solid #2a4202;
+			border-right: 17px solid transparent;
+		}
+	}
 	
 }
 
@@ -78,9 +105,14 @@
 }
 
 .news {
+	transform: translateY(-1px);
 	width: 300px;
 	padding: 20px;
 	background-color: #e5c07b;
+	background: url(../images/old_paper_2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
 	box-shadow: 3px 3px 5px rgba(89, 39, 1, 0.75);
 	border: solid 1px rgba(89, 39, 1, 0.3);
 	display:flex;
@@ -88,7 +120,7 @@
 }
 
 .news-title {
-	margin: 0;
+	margin: 0 0 15px;
 	font-family: $font-titles;
 	font-weight: normal;
 	font-size: 25px;
@@ -97,8 +129,8 @@
 }
 
 .news-main {
+	margin-top: 0;
 	font-family: $font-textnews;
-	
 }
 
 .news-location {

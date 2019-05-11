@@ -11,6 +11,9 @@ const allNews = [
 const newsUlEl = document.querySelector('.news-ul');
 const locationsUlEl = document.querySelector('.locations-container');
 const pageTitle = document.querySelector('.page-title');
+const createNewsEl = document.querySelector('.location-tab__create-news');
+const formEl = document.querySelector('.create-news--form');
+const formButtonEl = document.querySelector('.form-button');
 
 if (pageTitle.innerHTML==='News') {writeNews(allNews);}
 if (pageTitle.innerHTML==='News') {writeLocations();}
@@ -76,3 +79,16 @@ function filterLocation (event) {
 function clearNews () {
   newsUlEl.innerHTML = '';
 }
+
+
+function showForm () {
+  formEl.classList.remove('hidden');
+}
+
+createNewsEl.addEventListener('click', showForm);
+
+function handleCreateNews () {
+  formEl.classList.add('hidden');
+}
+
+formButtonEl.addEventListener('click',handleCreateNews);
