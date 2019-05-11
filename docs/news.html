@@ -30,9 +30,28 @@
             </ul>
         </header>
         <main class="news-board">
+            <button type="button" class="location-tab location-tab__create-news">Crear noticia</button>
             <ul class="locations-container"></ul>
             <ul class="news-ul"></ul>
         </main>
+        <form class="create-news--form hidden">
+            <button class="form-button-close" type="button">X</button>
+             <h2 class="news-title">Crear nueva noticia</h2>
+
+            <label for="location">Ciudad</label>
+            <input class="form-input" id="location" type="text" name="location"
+            placeholder="Poza Aguada" />
+            <label for="date">Fecha</label>
+            <input class="form-input" id="date" type="date" name="date"
+            />
+            <label for="title">Título</label>
+            <input class="form-input" id="title" type="text" name="title"
+            placeholder="Mi título" />
+            <label for="main">Noticia:</label>
+            <textarea class="form-input" id="main" name="comments"
+            rows="8" cols="50" placeholder="Mi noticia"></textarea>
+            <button class="form-button" type="button">Crear noticia</button>
+        </form>
         <script src="assets/js/main.js"></script>
     </body>
 
