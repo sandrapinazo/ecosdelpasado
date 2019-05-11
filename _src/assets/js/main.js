@@ -54,7 +54,6 @@ const formCloseEl = document.querySelector('.form-button-close');
 const inputEl = document.querySelectorAll('.form-input');
 let newNews = {};
 
-console.log(allNews);
 if (pageTitle.innerHTML === 'News') {
   writeNews(allNews);
 }
@@ -91,6 +90,7 @@ function writeNews(news) {
 }
 
 function writeLocations() {
+  //Fix sort issue with uppercase/lowercase
   locationsUlEl.innerHTML='';
   let allLocations = [];
   for (const item of allNews) {
@@ -140,12 +140,9 @@ function showForm() {
 createNewsEl.addEventListener('click', showForm);
 
 function handleCreateNews() {
-  //check if all inputs are filled
-  const filledInputs = checkInputsFilled();
-  if (filledInputs) {
+  //const filledInputs = checkInputsFilled();
+  if (checkInputsFilled()) {
     getValueFromInputs();
-    console.log(newNews);
-    //add newNews to allNews
     allNews.push(newNews);
     //parse allNews to Json
     //send Json to myJson
