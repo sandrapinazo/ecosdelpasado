@@ -1,49 +1,49 @@
 'use strict';
 
-const allNews = [
-  {
-    location: 'Vaticano',
-    date: '2019-05-04',
-    title: 'Más mujeres en la universidad',
-    main:
-      'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
-  },
-  {
-    location: 'Vaticano',
-    date: '2019-04-14',
-    title: '¡Cuidado en las calles!',
-    main:
-      'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
-  },
-  {
-    location: 'Poza Aguada',
-    date: '2019-04-07',
-    title: 'Trágico fin de la expedición vodacce',
-    main:
-      'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
-  },
-  {
-    location: 'Vaticano',
-    date: '2019-05-04',
-    title: 'Más mujeres en la universidad',
-    main:
-      'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
-  },
-  {
-    location: 'Vaticano',
-    date: '2019-04-14',
-    title: '¡Cuidado en las calles!',
-    main:
-      'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
-  },
-  {
-    location: 'Poza Aguada',
-    date: '2019-04-07',
-    title: 'Trágico fin de la expedición vodacce',
-    main:
-      'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
-  }
-];
+// const allNews = [
+//   {
+//     location: 'Vaticano',
+//     date: '2019-05-04',
+//     title: 'Más mujeres en la universidad',
+//     main:
+//       'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
+//   },
+//   {
+//     location: 'Vaticano',
+//     date: '2019-04-14',
+//     title: '¡Cuidado en las calles!',
+//     main:
+//       'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
+//   },
+//   {
+//     location: 'Poza Aguada',
+//     date: '2019-04-07',
+//     title: 'Trágico fin de la expedición vodacce',
+//     main:
+//       'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
+//   },
+//   {
+//     location: 'Vaticano',
+//     date: '2019-05-04',
+//     title: 'Más mujeres en la universidad',
+//     main:
+//       'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
+//   },
+//   {
+//     location: 'Vaticano',
+//     date: '2019-04-14',
+//     title: '¡Cuidado en las calles!',
+//     main:
+//       'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
+//   },
+//   {
+//     location: 'Poza Aguada',
+//     date: '2019-04-07',
+//     title: 'Trágico fin de la expedición vodacce',
+//     main:
+//       'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
+//   }
+// ];
 const newsUlEl = document.querySelector('.news-ul');
 const locationsUlEl = document.querySelector('.locations-container');
 const pageTitle = document.querySelector('.page-title');
@@ -53,17 +53,27 @@ const formButtonEl = document.querySelector('.form-button');
 const formCloseEl = document.querySelector('.form-button-close');
 const inputEl = document.querySelectorAll('.form-input');
 let newNews = {};
+let allNews = [];
 
 if (pageTitle.innerHTML === 'News') {
-  writeNews(allNews);
+  fetch('https://api.myjson.com/bins/1ccibi')
+    .then(response => response.json())
+    .then(function(data) {
+      const { news } = data;
+      allNews = news;
+      writeNews(news);
+      writeLocations(news);
+    });
 }
-if (pageTitle.innerHTML === 'News') {
-  writeLocations();
-}
+// if (pageTitle.innerHTML === 'News') {
+//   writeNews(allNews);
+// }
+// if (pageTitle.innerHTML === 'News') {
+//   writeLocations();
+// }
 
 function writeNews(news) {
-  newsUlEl.innerHTML = '';
-  //fetch news from MyJson api
+  clearNews();
   for (const item of news) {
     const newLi = document.createElement('li');
     newLi.classList.add('news-container');
@@ -89,11 +99,11 @@ function writeNews(news) {
   }
 }
 
-function writeLocations() {
+function writeLocations(news) {
   //Fix sort issue with uppercase/lowercase
-  locationsUlEl.innerHTML='';
+  locationsUlEl.innerHTML = '';
   let allLocations = [];
-  for (const item of allNews) {
+  for (const item of news) {
     if (!allLocations.includes(item.location)) {
       allLocations.push(item.location);
     }
@@ -120,7 +130,6 @@ function filterLocation(event) {
       ? item.location
       : item.location === selectedLocation
   );
-  clearNews();
   writeNews(locationNews);
   const locationTabs = locationsUlEl.querySelectorAll('.location-tab');
   for (const tab of locationTabs) {
@@ -140,15 +149,14 @@ function showForm() {
 createNewsEl.addEventListener('click', showForm);
 
 function handleCreateNews() {
-  //const filledInputs = checkInputsFilled();
   if (checkInputsFilled()) {
     getValueFromInputs();
     allNews.push(newNews);
-    //parse allNews to Json
-    //send Json to myJson
-    //update news and locations again
-    writeNews(allNews);
-    writeLocations();
+    const object = {
+      news: allNews
+    };
+    //send Json to myJson news and locations again
+    updateJson(object);
     closeForm();
   } else {
     alert('Rellena todos los campos');
@@ -178,4 +186,22 @@ function checkInputsFilled() {
     }
   }
   return true;
+}
+
+function updateJson(object) {
+  fetch('https://api.myjson.com/bins/1ccibi', {
+    method: 'PUT',
+    body: JSON.stringify(object),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(function(result) {
+      const { news } = result;
+      writeNews(news);
+      writeLocations(news);
+      allNews = news;
+    })
+    .catch(err => console.log('error', err));
 }
