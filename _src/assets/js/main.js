@@ -1,49 +1,5 @@
 'use strict';
 
-// const allNews = [
-//   {
-//     location: 'Vaticano',
-//     date: '2019-05-04',
-//     title: 'Más mujeres en la universidad',
-//     main:
-//       'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
-//   },
-//   {
-//     location: 'Vaticano',
-//     date: '2019-04-14',
-//     title: '¡Cuidado en las calles!',
-//     main:
-//       'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
-//   },
-//   {
-//     location: 'Poza Aguada',
-//     date: '2019-04-07',
-//     title: 'Trágico fin de la expedición vodacce',
-//     main:
-//       'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
-//   },
-//   {
-//     location: 'Vaticano',
-//     date: '2019-05-04',
-//     title: 'Más mujeres en la universidad',
-//     main:
-//       'Repentino aumento de las matrículas de mujeres en la universidad del Vaticano. Es estima un 48% más de mujeres que el año pasado.'
-//   },
-//   {
-//     location: 'Vaticano',
-//     date: '2019-04-14',
-//     title: '¡Cuidado en las calles!',
-//     main:
-//       'Recientes rumores acerca de un extraño de aspecto sospechoso recorriendo las calles en busca de hoja roja. Se recomienda alejarse de extraños y mantener a los niños acompañados.'
-//   },
-//   {
-//     location: 'Poza Aguada',
-//     date: '2019-04-07',
-//     title: 'Trágico fin de la expedición vodacce',
-//     main:
-//       'La expedición vodacce que tenía intención de encontrar y explorar la tumba del Imperatus Gaius Filipus termina en tragedia tras el ataque de bandidos montaigneses. Los supervivientes, parte del equipo que acompañaba a Oscar Zurita y Carlo Grazia Caligari, regresó la pasada semana portando las noticias.'
-//   }
-// ];
 const newsUlEl = document.querySelector('.news-ul');
 const locationsUlEl = document.querySelector('.locations-container');
 const pageTitle = document.querySelector('.page-title');
@@ -65,15 +21,19 @@ if (pageTitle.innerHTML === 'News') {
       writeLocations(news);
     });
 }
-// if (pageTitle.innerHTML === 'News') {
-//   writeNews(allNews);
-// }
-// if (pageTitle.innerHTML === 'News') {
-//   writeLocations();
-// }
 
 function writeNews(news) {
   clearNews();
+  news.sort(function (a, b) {
+    if (a.date > b.date) {
+      return -1;
+    }
+    if (a.date < b.date) {
+      return 1;
+    }
+    return 0;
+  });
+
   for (const item of news) {
     const newLi = document.createElement('li');
     newLi.classList.add('news-container');
@@ -88,9 +48,13 @@ function writeNews(news) {
     const newTitle = document.createTextNode(item.title);
     const newText = document.createTextNode(item.main);
     const newLocation = document.createTextNode(item.location);
+    const newSpacer = document.createTextNode(' • ');
+    const newDate = document.createTextNode(item.date);
     newH3.appendChild(newTitle);
     newP.appendChild(newText);
     newSpan.appendChild(newLocation);
+    newSpan.appendChild(newSpacer);
+    newSpan.appendChild(newDate);
     newArticle.appendChild(newH3);
     newArticle.appendChild(newP);
     newLi.appendChild(newSpan);
